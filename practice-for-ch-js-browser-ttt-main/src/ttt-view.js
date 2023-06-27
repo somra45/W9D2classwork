@@ -29,6 +29,9 @@ class View {
       playerMark.classList.add("mark-div")
       e.target.appendChild(playerMark);
       e.target.classList.toggle('clicked')
+      if (this.game.isOver()) {
+        this.handleGameOver();
+      }
   }
 
   makeMove(square) {
@@ -36,11 +39,28 @@ class View {
   }
   
   handleGameOver() {
-    const message = document.createElement("h3");
-    message.innerText = `You win, ${this.game.winner}!`
-    document.body.appendChild(message);
+    const tic = document.querySelector(".ttt ul")
 
+    if (this.game.winner()); {
+      const message = document.createElement("h3");
+      message.innerText = `You win, ${this.game.currentPlayer}!`
+      document.body.appendChild(message);
+    }
+    for (let i = 0; i < tic.children.length; i++) {
+      if (tic.children[i].innerText === this.game.currentPlayer) {
+        tic.children[i].classList.toggle('winner-background')
+      } else {
+        tic.children[i].classList.toggle('loser-background')
+      }
+    }
   }
-}
+};
 
 export default View;
+
+        // if (tic.children[i].innerText === this.game.currentPlayer) {
+        //   tic.children[i].classList.toggle('loser-background')
+        // } 
+        // else if (!tic.children[i].innerText) {
+        //   tic.children[i].classList.toggle('checked')
+        // }
