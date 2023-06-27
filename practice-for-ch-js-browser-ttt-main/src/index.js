@@ -10,5 +10,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let view1 = new View(game1, tic)
 
   view1.setupBoard(tic)
+
+  if (game1.winner()) {
+    return handleGameOver();
+  }
   
 });

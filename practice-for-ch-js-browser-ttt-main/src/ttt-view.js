@@ -36,6 +36,10 @@ class View {
   }
   
   handleGameOver() {
+    const message = document.createElement("h3");
+    message.innerText = `You win, ${this.game.winner}!`
+    document.body.appendChild(message);
+
   }
 }
 
