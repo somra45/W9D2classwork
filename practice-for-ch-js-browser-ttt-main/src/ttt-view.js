@@ -1,9 +1,21 @@
 class View {
   constructor(game, el) {
+    this.game = game;
+    this.el = el;
   }
   
-  setupBoard() {
-  }
+  setupBoard(tic) {
+    const grid = document.createElement("ul");
+    tic.appendChild(grid);
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        let block = document.createElement("li");
+        grid.appendChild(block);
+        block.setAttribute('data-position',[i, j]);
+      }
+    }
+  };
   
   handleClick(e) {
   }
