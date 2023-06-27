@@ -1,4 +1,6 @@
-class Clock {
+import * as warmUp from "./warmup";
+
+export default class Clock {
   constructor() {
     // 1. Create a Date object.
     let date = new Date();
@@ -6,6 +8,7 @@ class Clock {
     this.hours = date.getHours();
     this.minutes = date.getMinutes();
     this.seconds = date.getSeconds();
+    this.timeString = `${this.hours}:${this.minutes}:${this.seconds}`
     // 3. Call printTime.
     this.printTime();
     // 4. Schedule the tick at 1 second intervals.
@@ -14,7 +17,8 @@ class Clock {
 
    printTime() {
     // Format the time in HH:MM:SS
-    console.log(this.hours + ":" + this.minutes + ":" + this.seconds);
+    // return `${this.hours}:${this.minutes}:${this.seconds}`;
+    console.log(this.hours + ':'+ this.minutes + ':' + this.seconds);
     // Use console.log to print it.
   };
 
@@ -31,46 +35,9 @@ class Clock {
         this.hours += 1;
         this.minutes = 0;
     };
-
     // 2. Call printTime.
+    this.timeString = `${this.hours}:${this.minutes}:${this.seconds}`
     this.printTime();
   };
 }
 
-// const clock = new Clock();
-
-
-
-const readline = require('readline');
-
-const reader = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-function addNumbers(sum, numsLeft, completionCallback) {
-
-  if (numsLeft > 0) {
-    reader.question('Type in a number: ', function(res) {
-      sum += parseInt(res);
-      console.log(sum);
-      numsLeft--;
-      addNumbers(sum,numsLeft,completionCallback);
-    });
-  }
-  else {
-    reader.close();
-    completionCallback(sum);
-  };
-}
-
-// addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
-
-
-Function.prototype.myBind = function(context) {
-    let thisHolder = this
-    
-    return () => {
-        return thisHolder.apply(context)
-    };
-}
