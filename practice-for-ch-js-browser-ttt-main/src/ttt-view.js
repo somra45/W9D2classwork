@@ -17,7 +17,10 @@ class View {
     }
   };
   
-  handleClick(e) {
+  handleClick(e) { 
+    document.addEventListener("click", (e) => {
+      this.game.playMove(e.target.data-position);
+    })
   }
 
   makeMove(square) {
